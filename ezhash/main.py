@@ -39,4 +39,4 @@ class Hash():
                         algorithm.update(chunk)
                         pbar.update(len(chunk))
             return algorithm.hexdigest()  # hexdigest() returns a string
-        raise TypeError(f'Algorithm: {algorithm} not supported!')
+        raise TypeError(f'Algorithm: {self.algorithm} not supported!')
