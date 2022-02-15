@@ -9,19 +9,20 @@ app = typer.Typer()
 # Main command
 @app.command()
 def main(algorithm: str, path: str, compare_with: Optional[str] = typer.Argument(None)):
-    hash = Hash(algorithm, path)  # Initialize a Hash object
+    hash = Hash(algorithm, path, compare_with)  # Initialize a Hash object
 
     if compare_with is None:  # If the file hash to be compared with is not defined
-        print(hash.generate_file_hash())
+        typer.secho()
     else:
-        print()
+        typer.secho()
 
 
 class Hash():
     # Default constructor
-    def __init__(self, algorithm, path):
+    def __init__(self, algorithm, path, compare_with):
         self.algorithm = algorithm
         self.path = path
+        self.compare_with = compare_with
 
     # Function to generate and return file hash as a string
     def generate_file_hash(self):
@@ -40,3 +41,8 @@ class Hash():
                         pbar.update(len(chunk))
             return algorithm.hexdigest()  # hexdigest() returns a string
         raise TypeError(f'Algorithm: {self.algorithm} not supported!')
+
+    def display_progress(self):
+        self.generate_file_hash()
+
+        for i in range(self):
