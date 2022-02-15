@@ -32,7 +32,7 @@ class Hash():
             algorithm = hashlib.new(self.algorithm)
             file_size = Path(self.path).stat().st_size
 
-            with typer.progressbar(length=file_size) as pbar:
+            with typer.progressbar(length=file_size, label='HASHING:') as pbar:
                 while True:
                     chunk = f.read(8192)
                     if not chunk:  # If no more bytes to be read
@@ -48,10 +48,10 @@ class Hash():
     """
 
     def display_progress(self):
+        self.generate_file_hash()
+
         dictionary = (vars(self))  # Convert class properties into a dictionary
 
         # Iterate over the key value pairs in the dictionary and print them
         for key, value in dictionary.items():
             typer.secho(f'{key.upper()}: {value}')
-
-        self.generate_file_hash()
