@@ -48,10 +48,9 @@ class Hash():
     """
 
     def display_progress(self):
-        self.generate_file_hash()
+        typer.secho(f'FILE_HASH: {self.generate_file_hash()}')
 
         dictionary = (vars(self))  # Convert class properties into a dictionary
-
         # Iterate over the key value pairs in the dictionary and print them
         for key, value in dictionary.items():
             typer.secho(f'{key.upper()}: {value}')
