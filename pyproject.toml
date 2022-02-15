@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ezhash"
+version = "0.1.0"
+description = "CLI tool which computes file hash."
+authors = ["Naffah Abdulla Rasheed <mail@naffah.me>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = {extras = ["all"], version = "^0.4.0"}
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
