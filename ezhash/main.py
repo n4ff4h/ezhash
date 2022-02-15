@@ -2,6 +2,7 @@ import typer
 import hashlib
 from pathlib import Path
 from typing import Optional
+from tqdm import tqdm
 
 app = typer.Typer()
 
@@ -32,7 +33,7 @@ class Hash():
             algorithm = hashlib.new(self.algorithm)
             file_size = Path(self.path).stat().st_size
 
-            with typer.progressbar(length=file_size, label='HASHING:') as pbar:
+            with tqdm(total=file_size, unit='B', unit_scale=True) as pbar:
                 while True:
                     chunk = f.read(8192)
                     if not chunk:  # If no more bytes to be read
