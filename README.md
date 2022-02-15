@@ -1,2 +1,2 @@
 # ezhash
-CLI tool which computes file hash.
+CLI tool which computes and compares file hash.
