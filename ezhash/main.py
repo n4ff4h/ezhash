@@ -56,5 +56,5 @@ class Hash():
             typer.secho(f'{key.upper()}: {value}')
 
         if self.compare_with is not None:  # If the user defined a hash to be compared with
-            typer.secho('\nMATCH') if (
-                file_hash == self.compare_with) else typer.secho('\nDIFFERENT')
+            typer.secho('\nMATCH', fg=typer.colors.GREEN) if (
+                file_hash == self.compare_with) else typer.secho('\nDIFFERENT', fg=typer.colors.RED)
