@@ -49,9 +49,14 @@ class Hash():
     """
 
     def display_progress(self):
-        typer.secho(f'FILE_HASH: {self.generate_file_hash()}')
+        file_hash = self.generate_file_hash()
+        typer.secho(f'\nFILE_HASH: {file_hash}')
 
         dictionary = (vars(self))  # Convert class properties into a dictionary
         # Iterate over the key value pairs in the dictionary and print them
         for key, value in dictionary.items():
             typer.secho(f'{key.upper()}: {value}')
+
+        if self.compare_with is not None:  # If the user defined a hash to be compared with
+            typer.secho('\nMATCH') if (
+                file_hash == self.compare_with) else typer.secho('\nDIFFERENT')
