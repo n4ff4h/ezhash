@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ezhash"
-version = "0.1.0"
+version = "1.0.0"
 description = "CLI tool which computes and compares file hash."
 authors = ["Naffah Abdulla Rasheed <mail@naffah.me>"]
 license = "MIT"
