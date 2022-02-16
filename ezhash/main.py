@@ -48,12 +48,14 @@ class Hash():
         algorithm, path or file hash compared with
         '''
         file_hash = self.generate_file_hash()
-        typer.secho(f'\nFILE_HASH: {file_hash}')
+        typer.secho(
+            f'\nFILE_HASH: {typer.style(file_hash, fg=typer.colors.BLUE)}')
 
         dictionary = (vars(self))  # Convert class properties into a dictionary
         # Iterate over the key value pairs in the dictionary and print them
         for key, value in dictionary.items():
-            typer.secho(f'{key.upper()}: {value}')
+            typer.secho(
+                f'{key.upper()}: {typer.style(value, fg=typer.colors.BLUE)}')
 
         if self.compare_with is not None:  # If the user defined a hash to be compared with
             typer.secho('\nMATCH', fg=typer.colors.GREEN) if (
