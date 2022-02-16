@@ -16,15 +16,14 @@ def main(algorithm: str, path: str, compare_with: Optional[str] = typer.Argument
 
 
 class Hash():
-    # Default constructor
     def __init__(self, algorithm, path, compare_with):
+        ''' Default constructor '''
         self.algorithm = algorithm
         self.path = path
         self.compare_with = compare_with
 
-    """ Function to generate and return file hash as a string """
-
     def generate_file_hash(self):
+        ''' Function to generate and return file hash as a string '''
         if self.algorithm not in hashlib.algorithms_available:  # If the user defined algorithm is not available
             raise TypeError(f'Algorithm: {self.algorithm} not supported!')
 
@@ -42,13 +41,12 @@ class Hash():
                     pbar.update(len(chunk))
         return algorithm.hexdigest()  # hexdigest() returns a string
 
-    """ 
-    Calls 'generate_file_hash' function and 
-    displays the file hash along with 
-    algorithm, path or file hash compared with
-    """
-
     def display_progress(self):
+        '''
+        Calls 'generate_file_hash' function and 
+        displays the file hash along with 
+        algorithm, path or file hash compared with
+        '''
         file_hash = self.generate_file_hash()
         typer.secho(f'\nFILE_HASH: {file_hash}')
 
